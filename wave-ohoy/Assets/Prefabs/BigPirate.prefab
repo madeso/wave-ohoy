@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4600754999728612}
   - component: {fileID: 212038567466966942}
+  - component: {fileID: 61758693796918896}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -272,7 +273,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973238851438758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.222, y: -0.388, z: 0}
+  m_LocalPosition: {x: -0.203, y: -0.504, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4500456661993244}
@@ -285,7 +286,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271505240262362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.146, y: -0.376, z: 0}
+  m_LocalPosition: {x: 0.213, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4500456661993244}
@@ -298,7 +299,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1338515890316672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.252, y: -0.332, z: 0}
+  m_LocalPosition: {x: -0.217, y: -0.49, z: 0}
   m_LocalScale: {x: 0.074060835, y: 0.074060805, z: 0.074060805}
   m_Children: []
   m_Father: {fileID: 4500456661993244}
@@ -311,7 +312,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005235724639792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.1, y: -16.967695, z: -0.015625}
+  m_LocalPosition: {x: -24.1, y: -16.826, z: -0.015625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4036731817054482}
@@ -348,7 +349,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200472813674794}
   m_LocalRotation: {x: -0, y: -0, z: 0.03962779, w: 0.99921453}
-  m_LocalPosition: {x: 0.182, y: -0.394, z: 0}
+  m_LocalPosition: {x: 0.22, y: -0.495, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4500456661993244}
@@ -401,6 +402,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.38
+--- !u!61 &61758693796918896
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173409531336076}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.55}
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.2}
 --- !u!114 &114044817968096274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -412,14 +427,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddf34effc869df408d1867c29a0e3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPirateType: 0
+  myCurrentCharacterWalkingState: 0
+  myCurrentCharacterJumpState: 0
+  jumpHeight: 6
+  movementSpeed: 0.1
   head: {fileID: 1184040046757830}
   headOrigin: {fileID: 1174566323051028}
   headBobValueMax: 0.07
   headBobSpeed: 0.1
-  jumpHeight: 2.5
-  movementSpeed: 0.1
-  playerRigidBody2D: {fileID: 0}
   footCircleSpeed: 25
   leftFootOffset: {x: 0.025, y: 0, z: 0}
   rightFootOffset: {x: -0.025, y: 0, z: 0}
@@ -427,7 +442,8 @@ MonoBehaviour:
   rightFoot: {fileID: 1200472813674794}
   leftFootOrigin: {fileID: 1338515890316672}
   rightFootOrigin: {fileID: 1271505240262362}
-  gotoStandingStillSpeedFeet: 0.1
+  gotoStandingStillSpeedFeet: 20
+  feetRotationDistance: {x: 0, y: 0, z: 0.4}
   handCircleSpeed: 12
   leftHandOffset: {x: 0.02, y: 0, z: 0}
   rightHandOffset: {x: -0.02, y: 0, z: 0}
@@ -435,8 +451,14 @@ MonoBehaviour:
   rightHand: {fileID: 1633671544418282}
   leftHandOrigin: {fileID: 1602253624738484}
   rightHandOrigin: {fileID: 1383191884969160}
-  gotoStandingStillSpeedHands: 0.1
-  myCurrentWalking: 0
+  gotoStandingStillSpeedHands: 20
+  jumpingOffset: {x: 0, y: -0.5, z: 0}
+  fallingOffset: {x: 0, y: 0.5, z: 0}
+  landingOffset: {x: 0, y: 0.5, z: 0}
+  jumpingOffsetRecoverStrength: 3
+  fallingOffsetRecoverStrength: 8
+  landingOffsetRecoverStrength: 10
+  characterPreviousY: 0
 --- !u!212 &212038567466966942
 SpriteRenderer:
   m_ObjectHideFlags: 1
