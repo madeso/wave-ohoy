@@ -34,7 +34,7 @@ public class PlayerLimbs : MonoBehaviour {
     public float headBobValueMax = 0.1f;
     private bool  headBobUp;
     public float headBobSpeed;
-
+    private float headBobSpeedOriginal;
     //Feet
     public float footCircleSpeed;
     public Vector3 leftFootOffset;
@@ -81,7 +81,7 @@ public class PlayerLimbs : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        headBobSpeedOriginal = headBobSpeed;
         playerRigidBody2D = GetComponent<Rigidbody2D>();
         allSpriteRenderers = new List<SpriteRenderer>();
         for (int i = 0; i < transform.childCount; i++)
@@ -145,6 +145,7 @@ public class PlayerLimbs : MonoBehaviour {
             StopWalking();
         }
         */
+        
         switch (myCurrentCharacterJumpState)
         {
             case CharacterJumpState.None:
@@ -262,7 +263,7 @@ public class PlayerLimbs : MonoBehaviour {
         landing = false;
         moving = true;
         jumping = true;
-        headBobSpeed = headBobSpeed * 10 ;
+        headBobSpeed = headBobSpeedOriginal * 10 ;
         myCurrentCharacterJumpState = CharacterJumpState.Jumping;
     }
     public void StartWalkLeft()
@@ -305,7 +306,7 @@ public class PlayerLimbs : MonoBehaviour {
         {
             if (myCurrentCharacterJumpState == CharacterJumpState.Falling)
             {
-                headBobSpeed = headBobSpeed / 10    ;
+                headBobSpeed = headBobSpeedOriginal / 10;
             }
             myCurrentCharacterJumpState = CharacterJumpState.None;
             jumping = false;
