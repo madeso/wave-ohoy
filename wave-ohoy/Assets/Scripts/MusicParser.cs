@@ -52,8 +52,6 @@ public class MusicParser : MonoBehaviour {
 		this.Load();
 	}
 
-	public GameObject Ship;
-	
 	// Update is called once per frame
 	void Update () {
 		float lastTime = elapsedTime;
@@ -66,8 +64,6 @@ public class MusicParser : MonoBehaviour {
 		this.CurrentNotes.Clear();
 		foreach(var n in this.notes) {
 			if( n.Time >= lastTime && n.Time <= elapsedTime ) {
-				if( this.Ship != null ) {
-				}
 				this.CurrentNotes.Add(n);
 			}
 		}
