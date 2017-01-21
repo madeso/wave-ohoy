@@ -6,6 +6,7 @@ load_samples env
 thunder = env, "thunder"
 wind = env, "short_wind"
 magic_number = 1200
+running = true
 
 define :main_loop do |seed=magic_number, reps=16, dt=0.25, base=:c4, amp_factor=1, harshness=0.3, lead=false|
   use_random_seed seed
@@ -43,6 +44,7 @@ define :bg_bass do
   with_fx :krush, res: 0.8 do
     in_thread do
       loop do
+        break if not running
         play r.tick, amp: rrand(0.2, 0.25) * 0.2
         sleep 0.5
       end
@@ -138,5 +140,6 @@ live_loop :sound do
     end
     main_loop magic_number, 16, 0.5, :c5, 0.2, 0.2, true
   end
+  running = false
   stop
 end
