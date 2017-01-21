@@ -31,3 +31,5 @@ sysinfo.txt
 
 *.db
 *.DS_Store
+*.db.meta
+*.DS_Store.meta
