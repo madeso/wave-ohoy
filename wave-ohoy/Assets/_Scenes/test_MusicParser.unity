@@ -176,6 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 4900000, guid: f17c55e902ce64eb6a47e4b54ef1791f, type: 3}
   elapsedTime: 0
+  length: 0
+  Ship: {fileID: 0}
 --- !u!4 &414781020
 Transform:
   m_ObjectHideFlags: 0
@@ -376,6 +378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704618055}
   - component: {fileID: 1704618056}
+  - component: {fileID: 1704618057}
   m_Layer: 0
   m_Name: BoatPosition
   m_TagString: Untagged
@@ -411,6 +414,17 @@ MonoBehaviour:
     type: 2}
   Music: {fileID: 414781019}
   NoteType: 3
+--- !u!114 &1704618057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704618054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0a94ac14e4a4f11a7ed67775e169f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1933475684
 GameObject:
   m_ObjectHideFlags: 0
