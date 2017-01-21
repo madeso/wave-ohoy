@@ -45,23 +45,29 @@ public class MusicParser : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
+	public float length;
+
 	void Start () {
+		this.length = SyncedWaveMover.GetMusicLength();
 		this.Load();
 	}
 
-	int noteIndex = 0;
+	public GameObject Ship;
 	
 	// Update is called once per frame
 	void Update () {
 		float lastTime = elapsedTime;
 		elapsedTime += Time.deltaTime;
 
-		// for(int i=noteIndex <
+		if( this.elapsedTime > this.length ) {
+			this.elapsedTime -= this.length;
+		}
 
 		this.CurrentNotes.Clear();
 		foreach(var n in this.notes) {
-			if( n.Time > lastTime && n.Time < elapsedTime ) {
+			if( n.Time >= lastTime && n.Time <= elapsedTime ) {
+				if( this.Ship != null ) {
+				}
 				this.CurrentNotes.Add(n);
 			}
 		}
