@@ -27,10 +27,6 @@ public class Globals : MonoBehaviour {
 	// direction of 'left'
 	public Vector3 Left = new Vector3(1,0,0);
 
-	// todo: use visibility range check instead
-	// remove waves if they go beyond this range
-	public float WaveKillRange = 10;
-
 	// how much the waves fluctuate
 	public float WaveMoveSize = 0.1f;
 
