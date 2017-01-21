@@ -28,7 +28,8 @@ public class MusicParser : MonoBehaviour {
 		// todo: replace with proper json parser
 		var d = this.Data.text.Split("\n".ToCharArray());
 		for(int i=2; i<d.Length;) {
-			var s = d[i].Substring(0, d[i].Length-1);
+			var a = d[i].Trim();
+			var s = a.Substring(0, a.Length-1);
 			var time = float.Parse(s, CultureInfo.InvariantCulture);
 			var t = d[i+3].Trim();
 			var e = t.Substring(1, t.Length-2);
