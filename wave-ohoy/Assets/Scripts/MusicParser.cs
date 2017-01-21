@@ -8,7 +8,7 @@ public class MusicParser : MonoBehaviour {
 
 	public class Note {
 		public enum Type {
-			cymbal, thunder, wind, boom
+			cymbal, thunder, wind, boom, note
 		}
 
 		public float Time;
@@ -53,10 +53,10 @@ public class MusicParser : MonoBehaviour {
 		float lastTime = elapsedTime;
 		elapsedTime += Time.deltaTime;
 
+		this.CurrentNotes.Clear();
 		foreach(var n in this.notes) {
 			if( n.Time > lastTime && n.Time < elapsedTime ) {
-				Debug.Log(n.Event);
-				return;
+				this.CurrentNotes.Add(n);
 			}
 		}
 	}
