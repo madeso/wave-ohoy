@@ -6,14 +6,7 @@ public class SyncedWaveMover : MonoBehaviour {
 	GameObject end;
 	float length;
 
-	// Use this for initialization
-	void Start () {
-		this.end = GameObject.Find("WorldEnd");
-		if( this.end == null ) {
-			Debug.Log("Unable to get WorldEnd");
-		}
-
-		this.length = -1;
+	public static float GetMusicLength() {
 		var g = GameObject.Find("MusicPlayer");
 		if( g == null ) {
 			Debug.Log("Unable to find MusicPlayer");
@@ -24,9 +17,20 @@ public class SyncedWaveMover : MonoBehaviour {
 				Debug.Log("Failed to find Audio");
 			}
 			else {
-				this.length = s.clip.length;
+				return s.clip.length;
 			}
 		}
+		return 45;
+	}
+
+	// Use this for initialization
+	void Start () {
+		this.end = GameObject.Find("WorldEnd");
+		if( this.end == null ) {
+			Debug.Log("Unable to get WorldEnd");
+		}
+
+		this.length = GetMusicLength();
 
 		if( this.length < 0 ) {
 			this.length = 45;

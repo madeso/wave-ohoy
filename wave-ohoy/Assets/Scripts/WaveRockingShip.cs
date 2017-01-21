@@ -17,8 +17,8 @@ public class WaveRockingShip : MonoBehaviour {
 		if( this.ws == null ) return;
 		if( this.ws.Music == null ) return;
 		foreach(var n in this.ws.Music.CurrentNotes) {
-			// Debug.Log(n.Event);
-			if( n.Event != this.ws.NoteType ) return;
+			//Debug.Log(n.Event);
+			if( n.Event != this.ws.NoteType ) continue;
 			this.RockTheBoat();
 		}
 	}
