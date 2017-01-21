@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class MusicParser : MonoBehaviour {
@@ -28,7 +29,7 @@ public class MusicParser : MonoBehaviour {
 		var d = this.Data.text.Split("\n".ToCharArray());
 		for(int i=2; i<d.Length;) {
 			var s = d[i].Substring(0, d[i].Length-1);
-			var time = float.Parse(s);
+			var time = float.Parse(s, CultureInfo.InvariantCulture);
 			var t = d[i+3].Trim();
 			var e = t.Substring(1, t.Length-2);
 			Note.Type ev = Note.Type.cymbal;
@@ -47,11 +48,15 @@ public class MusicParser : MonoBehaviour {
 	void Start () {
 		this.Load();
 	}
+
+	int noteIndex = 0;
 	
 	// Update is called once per frame
 	void Update () {
 		float lastTime = elapsedTime;
 		elapsedTime += Time.deltaTime;
+
+		// for(int i=noteIndex <
 
 		this.CurrentNotes.Clear();
 		foreach(var n in this.notes) {
