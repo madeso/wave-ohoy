@@ -31,21 +31,21 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	private void SpawnHugeWave() {
-		this.sizeLeft += this.HugeWaveSize;
 		this.SpawnObject(this.HugeWave);
+		this.sizeLeft += this.HugeWaveSize;
 	}
 
 	private void SpawnSmallWave() {
-		this.sizeLeft += this.SmallWaveSize;
 		this.SpawnObject(this.SmallWave);
+		this.sizeLeft += this.SmallWaveSize;
 	}
 
 	private void SpawnObject(GameObject go) {
 		if(go == null) {
 			return;
 		}
-		// todo: change position based on sizeLeft
-		GameObject.Instantiate(go, this.transform.position, this.transform.rotation);
+		var p = this.transform.position;
+		GameObject.Instantiate(go, new Vector3(p.x - this.sizeLeft, p.y, p.z), this.transform.rotation);
 	}
 
 	void Start () { }
