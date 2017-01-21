@@ -8,8 +8,8 @@ public class MoveUpAndDown : MonoBehaviour {
 	private float position;
 
 	void UpdateTransformation() {
-		var p = this.transform.position;
-		this.transform.position = new Vector3(p.x, Mathf.Sin(position*Mathf.PI*2)*Globals.Instance.WaveMoveSize/2, p.z);
+		var p = this.transform.localPosition;
+		this.transform.localPosition = new Vector3(p.x, Mathf.Sin(position*Mathf.PI*2)*Globals.Instance.WaveMoveSize/2, p.z);
 	}
 
 	void Start() {
