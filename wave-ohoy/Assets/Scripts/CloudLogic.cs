@@ -6,11 +6,13 @@ public class CloudLogic : MonoBehaviour {
 	CloudTweaker tweaks;
 	Vector3 scale;
 
+	MusicParser music;
 
 	public float LocalThumpOffset = 0;
 
 	void Start () {
 		this.tweaks = GameObject.Find("CloudTweaker").GetComponent<CloudTweaker>();
+		this.music = GameObject.Find("MusicParser").GetComponent<MusicParser>();
 		this.scale = this.transform.localScale;
 	}
 
@@ -28,8 +30,15 @@ public class CloudLogic : MonoBehaviour {
 		this.p = wrap01(this.p+Time.deltaTime * (1/this.tweaks.TimeBetweenThumps) );
 		var current = wrap01(this.p+o);
 
-		if( last < 0.5f && current >= 0.5f ) {
+		foreach(var n in music.CurrentNotes) {
+			if( n.Event != MusicParser.Note.Type.boom) {
+				continue;
+			}
 			thump = 1;
+		}
+
+		if( last < 0.5f && current >= 0.5f ) {
+			// thump = 1;
 		}
 
 		if( thump > 0 ) {
@@ -38,8 +47,8 @@ public class CloudLogic : MonoBehaviour {
 		}
 
 		// todo: interpolate thumping
-		var thump_value = this.thump;
-		var interpolated_thump_value = Mathf.Sin( thump_value*Mathf.PI ) * this.tweaks.ThumpScale;
+		var thump_value = this.thump*2;
+		var interpolated_thump_value = Mathf.Abs(Mathf.Sin( thump_value*Mathf.PI )) * this.tweaks.ThumpScale;
 		this.transform.localScale = this.scale * (1+interpolated_thump_value);
 	}
 }
