@@ -8,11 +8,18 @@ public class SyncedLightning : MonoBehaviour {
 
 	private Light light;
 
+    AudioSource ass;
+
+    public Camera camera;
+    bool mode = false;
+
 	void Start () {
 		this.light = this.GetComponent<Light>();
 		if( this.light == null ) {
 			Debug.Log("Failed to find the light");
 		}
+
+        ass = GetComponent<AudioSource>();
 	}
 
 	float effect = 0;
@@ -26,6 +33,17 @@ public class SyncedLightning : MonoBehaviour {
 			foreach(var n in this.Music.CurrentNotes) {
 				if( n.Event == this.Note) {
 					this.effect = 1;
+
+                    ass.Play();
+                    if(mode)
+                    {
+                        camera.projectionMatrix = Matrix4x4.Perspective(60, 16f / 9f, 0.3f, 1000f);
+                    }
+                    else
+                    {
+                        camera.projectionMatrix = Matrix4x4.Ortho(-5, 5, -5, 5, 0.3f, 1000f);
+                    }
+                    mode = !mode;
 				}
 			}
 		}

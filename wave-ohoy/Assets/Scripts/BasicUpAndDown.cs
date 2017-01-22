@@ -8,7 +8,7 @@ public class BasicUpAndDown : MonoBehaviour {
 
 	void UpdateTransformation() {
 		var p = this.transform.localPosition;
-		this.transform.localPosition = new Vector3(p.x, p.y+Mathf.Sin(position*Mathf.PI*2)*WaveMoveSize/2, p.z);
+		this.transform.localPosition = new Vector3(p.x + Mathf.Cos(Time.time+p.y*5f)*0.01f, p.y+Mathf.Sin(position*Mathf.PI*2)*WaveMoveSize/2, p.z);
 	}
 
 	void Start() {

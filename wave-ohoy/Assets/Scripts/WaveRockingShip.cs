@@ -23,8 +23,9 @@ public class WaveRockingShip : MonoBehaviour {
 		}
 	}
 
+    public GameObject ship;
+
 	void RockTheBoat() {
-		// a wave has hit the boat, rock it!
-		Debug.Log("Rocking the boat");
+        ship.SendMessage("Rock");
 	}
 }

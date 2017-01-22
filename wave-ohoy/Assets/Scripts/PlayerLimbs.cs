@@ -44,9 +44,9 @@ public class PlayerLimbs : MonoBehaviour {
     public GameObject leftFootOrigin;
     public GameObject rightFootOrigin;
     public float gotoStandingStillSpeedFeet;
-    private bool moving;
-    private float leftFootAngle;
-    private float rightFootAngle;
+
+    private float leftFootAngle = 0f;
+    private float rightFootAngle = 0f;
     public Vector3 feetRotationDistance;
 
     //Hands
@@ -60,11 +60,6 @@ public class PlayerLimbs : MonoBehaviour {
     public float gotoStandingStillSpeedHands;
     private float leftHandAngle;
     private float rightHandAngle;
-
-
-    private bool jumping;
-    private bool falling;
-    private bool landing;
 
     public Vector3 jumpingOffset;
     public Vector3 fallingOffset;
@@ -120,36 +115,9 @@ public class PlayerLimbs : MonoBehaviour {
             }
         }
         head.transform.position = headOrigin.transform.position + new Vector3(0, headBobValue, 0);
-        moving = false;
-        
-        /*
-        if (Input.GetKey(KeyCode.A) == true)
-        {
-            StartWalkLeft();
-            playerRigidBody2D.AddForce(Vector3.left * movementSpeed, ForceMode2D.Impulse);
-        }
-        else if(Input.GetKey(KeyCode.D))
-        {
-            StartWalkRight();
-            playerRigidBody2D.AddForce(Vector3.right * movementSpeed, ForceMode2D.Impulse);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumping == false)
-        {
-            StartJump();
-            playerRigidBody2D.AddForce(Vector3.up * jumpHeight, ForceMode2D.Impulse);
-        }
-
-        if (moving == false)
-        {
-            StopWalking();
-        }
-        */
         
         switch (myCurrentCharacterJumpState)
         {
-            case CharacterJumpState.None:
-                break;
             case CharacterJumpState.Jumping:
                 leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, leftHandOrigin.transform.position + jumpingOffset, Time.deltaTime * jumpingOffsetRecoverStrength);
                 rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, rightHandOrigin.transform.position + jumpingOffset, Time.deltaTime * jumpingOffsetRecoverStrength);
@@ -195,9 +163,6 @@ public class PlayerLimbs : MonoBehaviour {
                     if (Vector3.Distance(leftHand.transform.position, leftHandOrigin.transform.position) < 0.1f)
                     {
                         landingHandsReached = false;
-                        jumping = false;
-                        falling = false;
-                        landing = false;
                         StopLanding();
                     }
                 }
@@ -254,22 +219,13 @@ public class PlayerLimbs : MonoBehaviour {
 
     public void StartJump()
     {
-        if (jumping == true)
-        {
-            return;
-        }
         landingHandsReached = false;
-        falling = false;
-        landing = false;
-        moving = true;
-        jumping = true;
         headBobSpeed = headBobSpeedOriginal * 10 ;
         myCurrentCharacterJumpState = CharacterJumpState.Jumping;
     }
     public void StartWalkLeft()
     {
         FlipSprites(true);
-        moving = true;
         myCurrentCharacterWalkingState = WalkingState.WalkingLeft;
 
         leftFoot.transform.position = leftFootOrigin.transform.position + leftFootOffset;
@@ -280,8 +236,8 @@ public class PlayerLimbs : MonoBehaviour {
     public void StartWalkRight()
     {
         FlipSprites(false);
-        moving = true;
         myCurrentCharacterWalkingState = WalkingState.WalkingRight;
+
         leftFoot.transform.position = leftFootOrigin.transform.position + leftFootOffset;
         rightFoot.transform.position = rightFootOrigin.transform.position + rightFootOffset;
         leftHand.transform.position = leftHandOrigin.transform.position + leftHandOffset;
@@ -309,9 +265,6 @@ public class PlayerLimbs : MonoBehaviour {
                 headBobSpeed = headBobSpeedOriginal / 10;
             }
             myCurrentCharacterJumpState = CharacterJumpState.None;
-            jumping = false;
-            falling = false;
-            landing = false;
         }
     }
 }

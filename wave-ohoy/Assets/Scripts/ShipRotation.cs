@@ -12,5 +12,12 @@ public class ShipRotation : MonoBehaviour {
 	
 	void Update () {
         rb.AddTorque(-transform.rotation.z*750f, ForceMode2D.Force);
+
+        rb.transform.position += new Vector3(0f, (-Mathf.Abs(transform.rotation.z)) / 90f, 0f) * Time.deltaTime;
 	}
+
+    public void Rock()
+    {
+        rb.AddTorque(-250f, ForceMode2D.Impulse);
+    }
 }
