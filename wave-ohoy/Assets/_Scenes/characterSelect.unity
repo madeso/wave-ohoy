@@ -1650,6 +1650,9 @@ GameObject:
   - component: {fileID: 1027012972}
   - component: {fileID: 1027012971}
   - component: {fileID: 1027012970}
+  - component: {fileID: 1027012976}
+  - component: {fileID: 1027012981}
+  - component: {fileID: 1027012978}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1703,11 +1706,11 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -1725,6 +1728,51 @@ Transform:
   m_Father: {fileID: 362697391}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 16.609001, y: 0, z: 0}
+--- !u!114 &1027012976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027012969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f4318ec6c2bf643a0f9edfeeaba0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1027012978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027012969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bc4aedc0a134147b35c9ef16b410a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitudeX: 0.5
+  amplitudeY: 0.5
+  distortionX: 0.025
+  distortionY: 0.025
+  speed: 5
+  wiggleShader: {fileID: 4800000, guid: 582885b7e735cb84b85e994f876d8a15, type: 3}
+--- !u!114 &1027012981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027012969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804642b6be2d17349b3406d817064aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthX: 0.1
+  strengthY: 0.1
+  frequencyX: 0.2
+  frequencyY: 0.1
+  speed: 2
+  wavesShader: {fileID: 4800000, guid: 3fd8d87e3eef26745a88fc735d54a5bb, type: 3}
 --- !u!1 &1032409066
 GameObject:
   m_ObjectHideFlags: 0
