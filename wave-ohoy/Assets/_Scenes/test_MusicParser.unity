@@ -147,6 +147,83 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8048bcda03bb49fda3822783c8d3d86, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &67559141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 67559144}
+  - component: {fileID: 67559143}
+  - component: {fileID: 67559142}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &67559142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67559141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fee48ba516b24c019df554aa355fb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Music: {fileID: 414781019}
+  Note: 1
+--- !u!108 &67559143
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67559141}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &67559144
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67559141}
+  m_LocalRotation: {x: 0.95125127, y: -0.044943467, z: 0.25488698, w: 0.16773133}
+  m_LocalPosition: {x: -1.51, y: 1.14, z: 6.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 160, y: -30, z: 0}
 --- !u!1 &414781018
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 4900000, guid: f17c55e902ce64eb6a47e4b54ef1791f, type: 3}
   elapsedTime: 0
+  length: 0
 --- !u!4 &414781020
 Transform:
   m_ObjectHideFlags: 0
@@ -376,6 +454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704618055}
   - component: {fileID: 1704618056}
+  - component: {fileID: 1704618057}
   m_Layer: 0
   m_Name: BoatPosition
   m_TagString: Untagged
@@ -411,6 +490,17 @@ MonoBehaviour:
     type: 2}
   Music: {fileID: 414781019}
   NoteType: 3
+--- !u!114 &1704618057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704618054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0a94ac14e4a4f11a7ed67775e169f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1933475684
 GameObject:
   m_ObjectHideFlags: 0

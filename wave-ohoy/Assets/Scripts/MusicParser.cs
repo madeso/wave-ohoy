@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class MusicParser : MonoBehaviour {
@@ -27,8 +28,9 @@ public class MusicParser : MonoBehaviour {
 		// todo: replace with proper json parser
 		var d = this.Data.text.Split("\n".ToCharArray());
 		for(int i=2; i<d.Length;) {
-			var s = d[i].Substring(0, d[i].Length-1);
-			var time = float.Parse(s);
+			var a = d[i].Trim();
+			var s = a.Substring(0, a.Length-1);
+			var time = float.Parse(s, CultureInfo.InvariantCulture);
 			var t = d[i+3].Trim();
 			var e = t.Substring(1, t.Length-2);
 			Note.Type ev = Note.Type.cymbal;
@@ -43,19 +45,25 @@ public class MusicParser : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
+	public float length;
+
 	void Start () {
+		this.length = SyncedWaveMover.GetMusicLength();
 		this.Load();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		float lastTime = elapsedTime;
 		elapsedTime += Time.deltaTime;
 
+		if( this.elapsedTime > this.length ) {
+			this.elapsedTime -= this.length;
+		}
+
 		this.CurrentNotes.Clear();
 		foreach(var n in this.notes) {
-			if( n.Time > lastTime && n.Time < elapsedTime ) {
+			if( n.Time >= lastTime && n.Time <= elapsedTime ) {
 				this.CurrentNotes.Add(n);
 			}
 		}
