@@ -1519,6 +1519,50 @@ Transform:
   m_Father: {fileID: 488196024}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 39.772003, y: -111.884, z: -61.014004}
+--- !u!1 &391318056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 391318058}
+  - component: {fileID: 391318057}
+  m_Layer: 0
+  m_Name: CloudTweaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &391318057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391318056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c847aa59655c8451db5042fab87112de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: 0
+  TimeBetweenThumps: 0.5
+  ThumpTime: 0.2
+  ThumpScale: 0.5
+--- !u!4 &391318058
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391318056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8493907, y: -2.0319443, z: 0.54866505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &452625426
 Prefab:
   m_ObjectHideFlags: 0
